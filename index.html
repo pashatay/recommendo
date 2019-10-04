@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOMENDo</title>
+    <link rel="stylesheet" href="style.css">   
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <header>
+     <div class="bar">
+         <h1><span id='border'><span style='color: #ffbbcc'>R</span><span style='color: #b2e4d5'>E</span><span style='color: #f7be16'>C</span><span style='color: #8ac6d1'>O</span><span style='color: #c05c7e'>M</span> | <span style='color: #e5b0ea'>M</span><span style='color: #ff8080'>E</span><span style='color: #d6e4aa'>N</span><span style='color: #7f78d2'>D</span>o</span></h1>
+         <h3 id='intro'>Get recommendations based on something you've already enjoyed.</h3>
+         <form id="js-form">
+             <input class='search' type="text" id="js-search-term" placeholder="type.." required spellcheck="true">
+             <select id = "contentType" class='search'>
+                    <option value = "music">music</option>
+                    <option value = "books">books</option>
+                    <option value = "movies">movies</option>
+                    <option value = "shows">tv shows</option>
+                    <option value = "podcasts">podcasts</option>
+                    <option value = "games">games</option>
+                  </select>
+             <button id="submit" class='search'>Go</button>
+         </form>
+     </div>
+    </header>
+    <main class="hidden">
+        <div class="section">
+                <div class="section-one"></div>
+        </div>
+        <div class="section">
+            <div class="section-two"></div>
+        </div>
+        
+    </main>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
