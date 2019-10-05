@@ -1,14 +1,14 @@
-let tasteDiveApi ='347272-recommen-FAY8D5B1';
-let tasteDiveUrl = 'https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?';
-let booksUrl = 'https://www.googleapis.com/books/v1/volumes?';
-let colors = ['ffbbcc', 'b2e4d5', 'f7be16', '8ac6d1', 'c05c7e', 'e5b0ea', 'ff8080', 'd6e4aa', '7f78d2', '64c4ed','b18ea6', '00818a']
+const tasteDiveApi ='347272-recommen-FAY8D5B1';
+const tasteDiveUrl = 'https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?';
+const booksUrl = 'https://www.googleapis.com/books/v1/volumes?';
+const colors = ['ffbbcc', 'b2e4d5', 'f7be16', '8ac6d1', 'c05c7e', 'e5b0ea', 'ff8080', 'd6e4aa', '7f78d2', '64c4ed','b18ea6', '00818a']
 
 function watchForm() {
     $('form').submit(event => {
       event.preventDefault();
       let searchTerm = $('#js-search-term').val();
       let searchType = $('#contentType').val();
-      getRecom(searchTerm, searchType);
+      getRecommendations(searchTerm, searchType);
     });
   }
 
@@ -18,16 +18,16 @@ function formatQueryParams(params) {
     return queryItems.join('&');
   }
 
-function getRecom(search, type){
+function getRecommendations(search, type){
     const params ={
         q: search,
         k: tasteDiveApi,
         limit: 12,
         info: 1,
-        type: type
+        type
     }
-    const queryString = formatQueryParams(params)
-    const url = tasteDiveUrl + queryString;
+  const queryString = formatQueryParams(params)
+  const url = tasteDiveUrl + queryString;
  
     fetch(url)
       .then(response => {
@@ -98,5 +98,4 @@ function displayResults(responseJson){
 
 }
 
-
-  $(watchForm);
+$(watchForm);
