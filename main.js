@@ -61,15 +61,28 @@ function fetchData(url) {
 }
 
 function displayResults(responseJson) {
-  let searchInfo = responseJson["Similar"]["Info"][0]["wTeaser"];
-  let searchInfoWiki = responseJson["Similar"]["Info"][0]["wUrl"];
-  let results = responseJson["Similar"]["Results"];
-  let type = responseJson["Similar"]["Results"][0]["Type"];
   $("main").removeClass("hidden");
+  let results = responseJson["Similar"]["Results"];
 
-  beforeResultsInfo(searchInfo, searchInfoWiki, type);
-  appendLisWithResults(results);
-  animateResults();
+  if (results.length === 0) {
+    noResults();
+    animateResults();
+  } else {
+    let searchInfo = responseJson["Similar"]["Info"][0]["wTeaser"];
+    let searchInfoWiki = responseJson["Similar"]["Info"][0]["wUrl"];
+    let type = responseJson["Similar"]["Results"][0]["Type"];
+    beforeResultsInfo(searchInfo, searchInfoWiki, type);
+    appendLisWithResults(results);
+    animateResults();
+  }
+}
+
+function noResults() {
+  $(".section-one").empty();
+  $(".section-one").append(
+    `<h3 id='head-search'>We weren't able to find anything! :(</h3>
+        <p>Try to refrase your search parametr. Make sure to select a type of a content you are looking for.</p>`
+  );
 }
 
 function beforeResultsInfo(searchInfo, searchInfoWiki, type) {
@@ -99,7 +112,8 @@ function appendLisWithResults(results) {
     $(".section-two").append(
       `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
           <p>${info}</p>
-          <button type='button' class='slideButton'>more</button>
+          <br>
+          <button type='button' class='slideButton' style="border-bottom: 3px solid #${colors[i]};">More</button>
           <iframe src='${wiki}' class='webFrame'></iframe></li>`
     );
   }
