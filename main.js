@@ -54,7 +54,7 @@ function displayResults(responseJson){
       if(type!='music'){
           $('.section-one').append(
           `<h3 id='head-search'>You've got an excelent taste! Wow!</h3>
-          <p>So, ${searchInfo} <a href='${searchInfoWiki}'>Read more..</a></p>
+          <p>So, ${searchInfo} <a href='${searchInfoWiki}' target="_blank">Read more..</a></p>
           
           <h3 id='foot-search'>And here is a selection of some ${type}s you may also like. Take a look:</h3>`  
       )
@@ -62,7 +62,7 @@ function displayResults(responseJson){
         $('.section-one').append(
             `<p>You've got an excelent taste! Wow!
             <br>So, ${searchInfo}</p>
-            <a href='${searchInfoWiki}'>Read more..</a>
+            <a href='${searchInfoWiki}' target="_blank">Read more..</a>
             <p>And here is a selection of some ${type} you may also like. Take a look:</p>`  
         )
       }
@@ -76,12 +76,24 @@ function displayResults(responseJson){
        $('.section-two').append(
           `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
           <p>${info}</p>
+          <button type='button id='slideBtn'>more</button>
           <iframe src='${wiki}' class='webFrame'></iframe></li>`
   )}
 
-  $('main').animate({ scrollTop: 0 }, "slow");
-  };
+  
 
+  $('html, body').animate({
+    scrollTop: $("main").offset().top
+  }, 900);
+
+  $( "#slideBtn" ).click(function() {
+    $( ".webFrame" ).slideToggle( "slow", function() {
+      // Animation complete.
+    });
+  });
+
+
+}
 
 
   $(watchForm);
