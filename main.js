@@ -76,22 +76,22 @@ function displayResults(responseJson){
        $('.section-two').append(
           `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
           <p>${info}</p>
-          <button type='button id='slideBtn'>more</button>
+          <button type='button' class='slideButton'>more</button>
           <iframe src='${wiki}' class='webFrame'></iframe></li>`
   )}
 
   
-
   $('html, body').animate({
     scrollTop: $("main").offset().top
   }, 900);
 
-  $( "#slideBtn" ).click(function() {
-    $( ".webFrame" ).slideToggle( "slow", function() {
+
+  $( ".slideButton").click(function() {
+    $(this).parents('li').toggleClass('bigClass');
+    $(this).siblings('.webFrame').slideToggle( "slow", function() {
       // Animation complete.
     });
   });
-
 
 }
 
