@@ -80,7 +80,7 @@ function displayResults(responseJson){
           <iframe src='${wiki}' class='webFrame'></iframe></li>`
   )}
 
-  
+
   $('html, body').animate({
     scrollTop: $("main").offset().top
   }, 900);
@@ -88,6 +88,9 @@ function displayResults(responseJson){
 
   $( ".slideButton").click(function() {
     $(this).parents('li').toggleClass('bigClass');
+    $('html, body').animate({
+      scrollTop: $(this).parents('li').offset().top
+    }, 400);
     $(this).siblings('.webFrame').slideToggle( "slow", function() {
       // Animation complete.
     });

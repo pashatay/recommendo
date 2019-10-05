@@ -89,7 +89,7 @@ a:link {
 }
 
 li{
-    width: 31.3%;
+    width: 48%;
     height: auto;
     list-style-type: none;
     padding: 2%;
@@ -110,4 +110,12 @@ li>p{
 }
 .webFrame{
     display: none;
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    text-align: center;
+    border: none;
+}
+.bigClass {
+    width: 100%;
 }
