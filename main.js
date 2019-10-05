@@ -12,12 +12,6 @@ function watchForm() {
     });
   }
 
-function formatQueryParams(params) {
-    const queryItems = Object.keys(params)
-      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    return queryItems.join('&');
-  }
-
 function getRecommendations(search, type){
     const params ={
         q: search,
@@ -28,8 +22,17 @@ function getRecommendations(search, type){
     }
   const queryString = formatQueryParams(params)
   const url = tasteDiveUrl + queryString;
- 
-    fetch(url)
+  fetchData(url);
+}
+
+function formatQueryParams(params) {
+    const queryItems = Object.keys(params)
+      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+    return queryItems.join('&');
+  }
+
+function fetchData(url){
+  fetch(url)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -40,7 +43,7 @@ function getRecommendations(search, type){
       .catch(err => {
         $('#js-error-message').text(`Something went wrong: ${err.message}`);
       });
-  }
+}
 
 function displayResults(responseJson){
     
@@ -50,7 +53,13 @@ function displayResults(responseJson){
     let type = responseJson['Similar']['Results'][0]['Type'];
     $('main').removeClass('hidden');
     
-      $('.section-one').empty();
+    beforeResultsInfo(searchInfo, searchInfoWiki, type);
+    appendLisWithResults(results);
+    animateResults()
+}
+
+function beforeResultsInfo(searchInfo, searchInfoWiki, type){
+  $('.section-one').empty();
       if(type!='music'){
           $('.section-one').append(
           `<h3 id='head-search'>You've got an excelent taste! Wow!</h3>
@@ -65,26 +74,26 @@ function displayResults(responseJson){
             <a href='${searchInfoWiki}' target="_blank">Read more..</a>
             <p>And here is a selection of some ${type} you may also like. Take a look:</p>`  
         )
-      }
-      
+    }
+}
 
-    for(let i=0; i<results.length; i++){
+function appendLisWithResults(results){
+   for(let i=0; i<results.length; i++){
       let title = results[i]['Name'];
       let wiki = results[i]['wUrl'];
       let info = results[i]['wTeaser']
-  
        $('.section-two').append(
           `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
           <p>${info}</p>
           <button type='button' class='slideButton'>more</button>
           <iframe src='${wiki}' class='webFrame'></iframe></li>`
   )}
+}
 
-
+function animateResults(){
   $('html, body').animate({
     scrollTop: $("main").offset().top
   }, 900);
-
 
   $( ".slideButton").click(function() {
     $(this).parents('li').toggleClass('bigClass');
@@ -92,10 +101,9 @@ function displayResults(responseJson){
       scrollTop: $(this).parents('li').offset().top
     }, 400);
     $(this).siblings('.webFrame').slideToggle( "slow", function() {
-      // Animation complete.
     });
   });
-
 }
+
 
 $(watchForm);
