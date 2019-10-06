@@ -36,18 +36,20 @@ h1 {
 }
 .search {
   height: 50px;
+  font-size: 24px; 
 }
 
 #js-search-term {
   width: 280px;
 }
-#contentType {
+#content-type {
   width: 120px;
+  -webkit-appearance: menulist-button;
 }
 
 #submit {
   width: 150px;
-  background: rgb(4, 173, 252);
+  background: #64c4ed;
   border: none;
 }
 
