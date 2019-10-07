@@ -262,15 +262,21 @@ a:visited {
   }
   #content-type {
     width: 280px;
-    text-align: center;
+    text-align-last: center;
     line-height: 50px;
+    padding-left: 120px !important;
+  }
+  #js-search-term {
+    text-align: center;
   }
   #submit {
     width: 280px;
     line-height: 50px;
-    justify-content: center;
   }
-
+  #submit-text {
+    margin: auto;
+    width: 280px;
+  }
   li {
     width: auto;
   }
