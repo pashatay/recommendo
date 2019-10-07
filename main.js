@@ -111,10 +111,10 @@ function beforeResultsInfo(searchInfo, searchInfoWiki, type) {
 }
 
 function appendLisWithResults(results) {
+  $(".section-two").empty();
   for (let i = 0; i < results.length; i++) {
     let title = results[i]["Name"];
     let wiki = results[i]["wUrl"].replace(/^http:\/\//i, "https://");
-    console.log(wiki);
     let info = results[i]["wTeaser"];
     $(".section-two").append(
       `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
