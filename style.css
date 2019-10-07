@@ -303,4 +303,22 @@ a:visited {
   li > h3 {
     text-align: center;
   }
+  #button-up{
+    position: relative !important;
+    bottom: 2px !important;  
+  }
+}
+
+
+#button-up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  position: fixed; 
+  bottom: 20px; 
+  left: 30px; 
+  z-index: 99; 
+  border: solid rgb(0, 0, 0);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 10px;
 }
