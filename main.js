@@ -18,7 +18,13 @@ const colors = [
 ];
 
 function watchForm() {
+  $("#ellips")
+    .find("div")
+    .addClass("hidden");
   $("form").submit(event => {
+    $("#ellips")
+      .find("div")
+      .removeClass("hidden");
     event.preventDefault();
     let searchTerm = $("#js-search-term").val();
     let searchType = $("#contentType").val();
@@ -115,12 +121,17 @@ function appendLisWithResults(results) {
           <p>${info}</p>
           <br>
           <button type='button' class='slideButton' style="border-bottom: 3px solid #${colors[i]};">More</button>
-          <iframe src='${wiki}' class='webFrame'></iframe></li>`
+          <iframe src='${wiki}' class='webFrame'></iframe>
+          <a href='${wiki}' id='mobile-version-wiki-link' style="border-bottom: 3px solid #${colors[i]};" target="_blank">More</a>
+          </li>`
     );
   }
 }
 
 function animateResults() {
+  $("#ellips")
+    .find("div")
+    .addClass("hidden");
   $("html, body").animate(
     {
       scrollTop: $("main").offset().top
