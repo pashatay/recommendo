@@ -227,6 +227,12 @@ a:visited {
     flex-direction: column;
     height: 100%;
   }
+  #head-search {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-size: 24px;
+    text-align: justify;
+}
   #border {
     padding: 5px;
     margin: auto;
@@ -278,6 +284,10 @@ a:visited {
   #submit-text {
     margin: auto;
     width: 280px;
+  }
+  #foot-search{
+    margin-top: 10%;
+    text-align: justify;
   }
   li {
     width: auto;
