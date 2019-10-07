@@ -47,7 +47,7 @@ h1 {
   width: 280px;
   text-align: left;
   -webkit-appearance: none;
-  border-radius: none;
+  border-radius: 0;
 }
 #content-type {
   width: 140px;
