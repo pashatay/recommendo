@@ -45,6 +45,7 @@ h1 {
 
 #js-search-term {
   width: 280px;
+  -webkit-appearance: none;
 }
 #content-type {
   width: 140px;
@@ -225,7 +226,7 @@ a:visited {
     height: 100%;
   }
   #border {
-    padding: 0;
+    padding: 5px;
     margin: auto;
   }
   #intro {
