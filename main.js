@@ -86,6 +86,7 @@ function displayResults(responseJson) {
 
 function noResults() {
   $(".section-one").empty();
+  $(".section-two").empty();
   $(".section-one").append(
     `<h3 id='head-search'>We weren't able to find anything! :(</h3>
         <p>Try to refrase your search parametr. Make sure to select a type of a content you are looking for.</p>`
