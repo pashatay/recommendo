@@ -74,7 +74,8 @@ function displayResults(responseJson) {
     noResults();
     animateResults();
   } else {
-    let searchInfo = responseJson["Similar"]["Info"][0]["wTeaser"];
+    let searchInfo =
+      responseJson["Similar"]["Info"][0]["wTeaser"].substr(0, 500) + "...";
     let searchInfoWiki = responseJson["Similar"]["Info"][0]["wUrl"];
     let type = responseJson["Similar"]["Results"][0]["Type"];
     beforeResultsInfo(searchInfo, searchInfoWiki, type);
@@ -96,7 +97,7 @@ function beforeResultsInfo(searchInfo, searchInfoWiki, type) {
   if (type != "music") {
     $(".section-one").append(
       `<h3 id='head-search'>You've got an excelent taste! Wow!</h3>
-          <p>So, ${searchInfo} <a href='${searchInfoWiki}' target="_blank">Read more..</a></p>
+          <p>So, ${searchInfo} <a href='${searchInfoWiki}' target="_blank">read more</a></p>
           
           <h3 id='foot-search'>And here is a selection of some ${type}s you may also like. Take a look:</h3>`
     );
@@ -104,7 +105,7 @@ function beforeResultsInfo(searchInfo, searchInfoWiki, type) {
     $(".section-one").append(
       `<p>You've got an excelent taste! Wow!
             <br>So, ${searchInfo}</p>
-            <a href='${searchInfoWiki}' target="_blank">Read more..</a>
+            <a href='${searchInfoWiki}' target="_blank">read more</a>
             <p>And here is a selection of some ${type} you may also like. Take a look:</p>`
     );
   }
@@ -115,16 +116,38 @@ function appendLisWithResults(results) {
   for (let i = 0; i < results.length; i++) {
     let title = results[i]["Name"];
     let wiki = results[i]["wUrl"].replace(/^http:\/\//i, "https://");
-    let info = results[i]["wTeaser"];
-    $(".section-two").append(
-      `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
-          <p>${info}</p>
+    let info = results[i]["wTeaser"].substr(0, 700) + "...";
+    let charLimit = 300;
+    if (info.length < charLimit) {
+      $(".section-two").append(
+        `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
+            <p>${info}</p>
+            <br>
+            <button type='button' class='slideButton' style="border-bottom: 3px solid #${colors[i]};">More</button>
+            <iframe src='${wiki}' class='webFrame'></iframe>
+            <a href='${wiki}' id='mobile-version-wiki-link' style="border-bottom: 3px solid #${colors[i]};" target="_blank">More</a>
+            </li>`
+      );
+    } else {
+      $(".section-two").append(
+        `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
+          <p><span class="short-text">${info.substr(
+            0,
+            charLimit
+          )}</span><span class="long-text">${info.substr(
+          charLimit
+        )}</span><span class="text-dots">...</span></p>
           <br>
-          <button type='button' class='slideButton' style="border-bottom: 3px solid #${colors[i]};">More</button>
+          <button type='button' class='slideButton' style="border-bottom: 3px solid #${
+            colors[i]
+          };">More</button>
           <iframe src='${wiki}' class='webFrame'></iframe>
-          <a href='${wiki}' id='mobile-version-wiki-link' style="border-bottom: 3px solid #${colors[i]};" target="_blank">More</a>
+          <a href='${wiki}' id='mobile-version-wiki-link' style="border-bottom: 3px solid #${
+          colors[i]
+        };" target="_blank">More</a>
           </li>`
-    );
+      );
+    }
   }
 }
 
