@@ -25,7 +25,7 @@ Lets say, you want to get recommendations based on the tv show you just watched.
 After that just click on **Go** and wait for your recommendations to get listed. 
 
 Your personal recommendations will get displayed on the page with short annotation for every single content.  
-If you would like to learn more about cirtain recommendation, you can click on _"More"_ and get the whole information from **Wiki** page. 
+If you would like to learn more about cirtain recommendation, you can click on _"More"_ and get the whole information from the **Wiki** page. 
 
 Take a look at the desktop interface:
 
