@@ -1,33 +1,33 @@
-const tasteDiveApi = '347272-recommen-FAY8D5B1';
-const tasteDiveUrl = 'https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?';
-const booksUrl = 'https://www.googleapis.com/books/v1/volumes?';
+const tasteDiveApi = "347272-recommen-FAY8D5B1";
+const tasteDiveUrl =
+  "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?";
+const booksUrl = "https://www.googleapis.com/books/v1/volumes?";
 const colors = [
-  'ffbbcc',
-  'b2e4d5',
-  'f7be16',
-  '8ac6d1',
-  'c05c7e',
-  'e5b0ea',
-  'ff8080',
-  'd6e4aa',
-  '7f78d2',
-  '64c4ed',
-  'b18ea6',
-  '00818a',
+  "ffbbcc",
+  "b2e4d5",
+  "f7be16",
+  "8ac6d1",
+  "c05c7e",
+  "e5b0ea",
+  "ff8080",
+  "d6e4aa",
+  "7f78d2",
+  "64c4ed",
+  "b18ea6",
+  "00818a"
 ];
 
 function watchForm() {
-  $('#ellips')
-    .find('div')
-    .addClass('hidden');
-  $('form').submit(event => {
-    $('#ellips')
-      .find('div')
-      .removeClass('hidden');
+  $("#ellips")
+    .find("div")
+    .addClass("hidden");
+  $("form").submit(event => {
+    $("#ellips")
+      .find("div")
+      .removeClass("hidden");
     event.preventDefault();
-    // I believe these can be const variables
-    let searchTerm = $('#js-search-term').val();
-    let searchType = $('#contentType').val();
+    let searchTerm = $("#js-search-term").val();
+    let searchType = $("#contentType").val();
     getRecommendations(searchTerm, searchType);
   });
 }
@@ -38,7 +38,7 @@ function getRecommendations(search, type) {
     k: tasteDiveApi,
     limit: 12,
     info: 1,
-    type,
+    type
   };
   const queryString = formatQueryParams(params);
   const url = tasteDiveUrl + queryString;
@@ -47,13 +47,11 @@ function getRecommendations(search, type) {
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
-    key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`,
+    key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
   );
-  return queryItems.join('&');
+  return queryItems.join("&");
 }
 
-// At some point, you may want to look into Async/Await - Google async functions in JS
-// It will help clean up these promise chains
 function fetchData(url) {
   fetch(url)
     .then(response => {
@@ -64,115 +62,81 @@ function fetchData(url) {
     })
     .then(responseJson => displayResults(responseJson))
     .catch(err => {
-      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+      $("#js-error-message").text(`Something went wrong: ${err.message}`);
     });
 }
 
 function displayResults(responseJson) {
-  $('main').removeClass('hidden'); // I think this can be its own small function
-
-  // I believe this could be just a const
-  let results = responseJson['Similar']['Results'];
+  $("main").removeClass("hidden");
+  let results = responseJson["Similar"]["Results"];
 
   if (results.length === 0) {
     noResults();
     animateResults();
   } else {
-    // I believe these could be changed to const variables
-    let searchInfo = responseJson['Similar']['Info'][0]['wTeaser'].substr(0, 500) + '...';
-    let searchInfoWiki = responseJson['Similar']['Info'][0]['wUrl'];
-    let type = responseJson['Similar']['Results'][0]['Type'];
+    let searchInfo =
+      responseJson["Similar"]["Info"][0]["wTeaser"].substr(0, 500) + "...";
+    let searchInfoWiki = responseJson["Similar"]["Info"][0]["wUrl"];
+    let type = responseJson["Similar"]["Results"][0]["Type"];
     beforeResultsInfo(searchInfo, searchInfoWiki, type);
     appendLisWithResults(results);
     animateResults();
   }
-}
-
-function removeHiddenClass() {
-  $('main').removeClass('hidden');
-}
-
-// I believe the above function could be re-written like this
-function displayResults(responseJSON) {
-  removeHiddenClass();
-
-  if (results) {
-    const searchInfo = responseJson['Similar']['Info'][0]['wTeaser'].substr(0, 500) + '...';
-    const searchInfoWiki = responseJson['Similar']['Info'][0]['wUrl'];
-    const type = responseJson['Similar']['Results'][0]['Type'];
-    beforeResultsInfo(searchInfo, searchInfoWiki, type);
-    appendLisWithResults(results);
-    animateResults();
-  }
-
-  noResults();
-  animateResults();
 }
 
 function noResults() {
-  $('.section-one').empty();
-  $('.section-two').empty();
-  $('.section-one').append(
+  $(".section-one").empty();
+  $(".section-two").empty();
+  $(".section-one").append(
     `<h3 id='head-search'>We weren't able to find anything! :(</h3>
-        <p>Try to refrase your search parametr. Make sure to select a type of a content you are looking for.</p>`,
+        <p>Try to refrase your search parametr. Make sure to select a type of a content you are looking for.</p>`
   );
 }
 
-// I believe this function can be restated as:
-  // if type === music -> do this
-  // or just do the logic in the else block
-
-  // I don't think you need an else here
-  // I would break those $('.section-one') html appends into their own
-  // functions. It's a bit hard to read whats going on. You just know html and is being
-  // appended to the DOM
 function beforeResultsInfo(searchInfo, searchInfoWiki, type) {
-  $('.section-one').empty();
-  if (type != 'music') {
-    $('.section-one').append(
+  $(".section-one").empty();
+  if (type != "music") {
+    $(".section-one").append(
       `<h3 id='head-search'>You've got an excelent taste! Wow!</h3>
           <p>So, ${searchInfo} <a href='${searchInfoWiki}' target="_blank">read more</a></p>
           
-          <h3 id='foot-search'>And here is a selection of some ${type}s you may also like. Take a look:</h3>`,
+          <h3 id='foot-search'>And here is a selection of some ${type}s you may also like. Take a look:</h3>`
     );
   } else {
-    $('.section-one').append(
+    $(".section-one").append(
       `<p>You've got an excelent taste! Wow!
             <br>So, ${searchInfo}</p>
             <a href='${searchInfoWiki}' target="_blank">read more</a>
-            <p>And here is a selection of some ${type} you may also like. Take a look:</p>`,
+            <p>And here is a selection of some ${type} you may also like. Take a look:</p>`
     );
   }
 }
 
-// Use the feedback above to refactor this function as well.
-// it's a bit long, and tough to read.
 function appendLisWithResults(results) {
-  $('.section-two').empty();
+  $(".section-two").empty();
   for (let i = 0; i < results.length; i++) {
-    // I believe these can be const variables as well
-    let title = results[i]['Name'];
-    let wiki = results[i]['wUrl'].replace(/^http:\/\//i, 'https://');
-    let info = results[i]['wTeaser'].substr(0, 700) + '...';
+    let title = results[i]["Name"];
+    let wiki = results[i]["wUrl"].replace(/^http:\/\//i, "https://");
+    let info = results[i]["wTeaser"].substr(0, 700) + "...";
     let charLimit = 300;
     if (info.length < charLimit) {
-      $('.section-two').append(
+      $(".section-two").append(
         `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
             <p>${info}</p>
             <br>
             <button type='button' class='slideButton' style="border-bottom: 3px solid #${colors[i]};">More</button>
             <iframe src='${wiki}' class='webFrame'></iframe>
             <a href='${wiki}' id='mobile-version-wiki-link' style="border-bottom: 3px solid #${colors[i]};" target="_blank">More</a>
-            </li>`,
+            </li>`
       );
     } else {
-      $('.section-two').append(
+      $(".section-two").append(
         `<li><h3 style="border-bottom: 8px solid #${colors[i]};">${title}</h3>
           <p><span class="short-text">${info.substr(
             0,
-            charLimit,
+            charLimit
           )}</span><span class="long-text">${info.substr(
-          charLimit,
+          charLimit
         )}</span><span class="text-dots">...</span></p>
           <br>
           <button type='button' class='slideButton' style="border-bottom: 3px solid #${
@@ -182,41 +146,38 @@ function appendLisWithResults(results) {
           <a href='${wiki}' id='mobile-version-wiki-link' style="border-bottom: 3px solid #${
           colors[i]
         };" target="_blank">More</a>
-          </li>`,
+          </li>`
       );
     }
   }
 }
 
-// If these are separate animations break them out into their own named
-// functions and then call them in the animateResults function.
-
 function animateResults() {
-  $('#ellips')
-    .find('div')
-    .addClass('hidden');
-  $('html, body').animate(
+  $("#ellips")
+    .find("div")
+    .addClass("hidden");
+  $("html, body").animate(
     {
-      scrollTop: $('main').offset().top,
+      scrollTop: $("main").offset().top
     },
-    900,
+    900
   );
 
-  $('.slideButton').click(function() {
+  $(".slideButton").click(function() {
     $(this)
-      .parents('li')
-      .toggleClass('bigClass');
-    $('html, body').animate(
+      .parents("li")
+      .toggleClass("bigClass");
+    $("html, body").animate(
       {
         scrollTop: $(this)
-          .parents('li')
-          .offset().top,
+          .parents("li")
+          .offset().top
       },
-      400,
+      400
     );
     $(this)
-      .siblings('.webFrame')
-      .slideToggle('slow', function() {});
+      .siblings(".webFrame")
+      .slideToggle("slow", function() {});
   });
 }
 
