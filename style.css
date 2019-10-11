@@ -7,6 +7,11 @@
 *:focus {
   outline: none;
 }
+header {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .hidden {
   display: none;
 }
@@ -19,19 +24,20 @@
   background: rgba(0, 0, 0, 0.92);
 }
 h1 {
-  margin: 5%;
   font-size: 44px;
+  text-align: end;
+  margin: auto;
 }
 #border {
   border: 3px solid white;
-  padding: 1%;
+  padding: 5px;
+  margin: auto;
 }
 #intro {
-  text-align: end;
-  font-size: 45px;
-  margin-left: 40%;
-  margin-right: 3%;
   padding: 2%;
+  text-align: center;
+  margin: auto;
+  font-size: 36px;
 }
 #js-form {
   margin: auto;
@@ -44,35 +50,47 @@ h1 {
   font-size: 24px;
   border: none;
   padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 2%;
 }
 
 #js-search-term {
   width: 280px;
-  text-align: left;
   -webkit-appearance: none;
   border-radius: 0;
+  text-align: center;
 }
 #content-type {
-  width: 220px;
+  width: 280px;
   text-align: center;
   -webkit-appearance: none;
-  padding-left: 10px;
-  -webkit-border-radius: 0px !important;
+  -webkit-border-radius: 0px;
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
     linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
   background-repeat: no-repeat, repeat;
   background-position: right 0.5em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
+  text-align-last: center;
+  line-height: 50px;
+  padding-left: 90px;
 }
-
 #submit {
-  width: 150px;
+  width: 280px;
   background: #64c4ed;
   border: none;
   cursor: pointer;
+  line-height: 50px;
+}
+#submit-text {
+  text-align: center;
+  margin: auto;
+  width: 280px;
 }
 #mobile-version-wiki-link {
-  display: none;
+  display: block;
+  text-align: center;
 }
 a:link {
   text-decoration: none;
@@ -81,17 +99,23 @@ a:link {
   color: rgba(0, 0, 0, 0.92);
 }
 #head-search {
-  margin-bottom: 2%;
+  margin-top: 4%;
+  margin-bottom: 4%;
   font-size: 24px;
+  text-align: justify;
 }
+
 #foot-search {
-  margin-top: 3%;
+  margin-top: 10%;
+  text-align: justify;
   font-size: 24px;
 }
 .section {
-  display: block;
   height: auto;
   margin: 5%;
+  display: flex;
+  flex-direction: column;
+  width: auto;
 }
 .section-one > p {
   font-size: 24px;
@@ -102,6 +126,7 @@ a:link {
   flex-wrap: wrap;
   width: 100%;
   height: auto;
+  flex-direction: column;
 }
 .section-three {
   display: block;
@@ -111,7 +136,7 @@ a:link {
 }
 
 li {
-  width: 48%;
+  width: auto;
   height: auto;
   list-style-type: none;
   padding: 2%;
@@ -121,10 +146,14 @@ li {
   color: rgba(0, 0, 0, 0.92);
 }
 .text-dots {
+  display: inline-block;
+}
+.long-text {
   display: none;
 }
 
 li > h3 {
+  text-align: center;
   font-size: 24px;
   font-weight: bold;
 }
@@ -133,20 +162,14 @@ li > p {
   font-size: 20px;
   margin-top: 20px;
 }
+
 .slideButton {
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  background: none;
+  display: none;
 }
 .webFrame {
   display: none;
-  width: 100%;
-  height: 500px;
-  margin: auto;
-  text-align: center;
-  border: none;
 }
+
 .bigClass {
   width: 100%;
 }
@@ -223,114 +246,116 @@ a:visited {
   }
 }
 
-#submit-text {
-  text-align: center;
-  margin: auto;
-}
-
-@media screen and (max-width: 850px) {
-  header {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  #head-search {
-    margin-top: 4%;
-    margin-bottom: 4%;
-    font-size: 24px;
-    text-align: justify;
-  }
-  #border {
-    padding: 5px;
-    margin: auto;
-  }
-  #intro {
-    text-align: center;
-    margin: auto;
-    font-size: 36px;
-  }
-  h1 {
-    text-align: end;
-    margin: auto;
-  }
-  .js-form {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .section {
-    display: flex;
-    flex-direction: column;
-    width: auto;
-  }
-  .section-two {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  .search {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-bottom: 2%;
-  }
-  #content-type {
-    width: 280px;
-    text-align-last: center;
-    line-height: 50px;
-    padding-left: 90px !important;
-  }
-  #js-search-term {
-    text-align: center;
-  }
-  #submit {
-    width: 280px;
-    line-height: 50px;
-  }
-  #submit-text {
-    margin: auto;
-    width: 280px;
-  }
-  #foot-search {
-    margin-top: 10%;
-    text-align: justify;
-  }
-  .text-dots {
-    display: inline-block;
-  }
-  .long-text {
-    display: none;
-  }
-  li {
-    width: auto;
-  }
-
-  .slideButton {
-    display: none;
-  }
-  #mobile-version-wiki-link {
-    display: block;
-    text-align: center;
-  }
-  li > h3 {
-    text-align: center;
-  }
-  #button-up {
-    position: relative !important;
-    bottom: 2px !important;
-  }
-}
-
 #button-up {
+  position: relative;
+  bottom: 2px;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
-  position: fixed;
-  bottom: 20px;
   left: 30px;
   z-index: 99;
   border: solid rgba(0, 0, 0, 0.92);
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 10px;
+}
+
+@media (min-width: 850px) {
+  h1 {
+    margin: 5%;
+    text-align: start;
+  }
+  #border {
+    padding: 1%;
+  }
+
+  #intro {
+    text-align: end;
+    font-size: 45px;
+    margin: 0 3% 0 40%;
+    padding: 2%;
+  }
+
+  #js-form {
+    display: flex;
+    justify-content: center;
+  }
+
+  #content-type {
+    width: 220px;
+    margin: 0;
+    padding-left: 10px;
+  }
+
+  #js-search-term {
+    width: 280px;
+    text-align: left;
+    margin: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  #submit {
+    width: 150px;
+    margin: 0;
+  }
+
+  #submit-text {
+    text-align: center;
+    margin: 0;
+    width: 150px;
+  }
+
+  .search {
+    height: 50px;
+    font-size: 24px;
+    border: none;
+    padding-left: 5px;
+  }
+  #head-search {
+    margin-bottom: 2%;
+    margin-top: 0;
+    font-size: 24px;
+  }
+  #foot-search {
+    margin-top: 3%;
+  }
+  .text-dots {
+    display: none;
+  }
+  .long-text {
+    display: contents;
+  }
+  .section-two {
+    flex-direction: row;
+  }
+  li {
+    width: 48%;
+  }
+  li > h3 {
+    text-align: inherit;
+  }
+  #mobile-version-wiki-link {
+    display: none;
+  }
+
+  .webFrame {
+    display: none;
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    text-align: center;
+    border: none;
+  }
+
+  .slideButton {
+    display: block;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+  }
+  #button-up {
+    position: fixed;
+    bottom: 20px;
+  }
 }
