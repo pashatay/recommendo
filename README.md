@@ -1,6 +1,6 @@
 # Recommendo
 
-_Recommendo_ is a simple, user-friendly app which can get you recomendations based on your favorite content (a favorite book, music band, tv show etc). 
+_Recommendo_ is a simple app which can get you recomendations based on your favorite content (a favorite book, music band, tv show etc). 
 
 It works well on any device.
 
