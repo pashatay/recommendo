@@ -1,44 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RECOMENDo</title>
-    <link rel="stylesheet" href="normalize.css">  
-    <link rel="stylesheet" href="style.css">   
-    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
-    </head>
-    <body>
-    <header id='header'>
-     <section class="bar" aria-label="Search bar section." >
-         <h1><span id='border'><span style='color: #ffbbcc'>R</span><span style='color: #b2e4d5'>E</span><span style='color: #f7be16'>C</span><span style='color: #8ac6d1'>O</span><span style='color: #c05c7e'>M</span> | <span style='color: #e5b0ea'>M</span><span style='color: #ff8080'>E</span><span style='color: #d6e4aa'>N</span><span style='color: #7f78d2'>D</span>o</span></h1>
-         <h3 id='intro'>Get recommendations based on something you've already enjoyed.</h3>
-         <form id="js-form">
-             <select id ="content-type" class='search'>
-                    <option value = "">My favorite</option>
-                    <option value = "music">band/artist is</option>
-                    <option value = "books">book is</option>
-                    <option value = "movies">movie is</option>
-                    <option value = "shows">tv show is</option>
-                    <option value = "podcasts">podcast is</option>
-                    <option value = "games">game is</option>
-                  </select>
-            <input class='search' type="text" id="js-search-term" placeholder="type a name of it.." required spellcheck="true">
-           <button id="submit" class='search'><span id='submit-text'>Go</span></button>     
-         </form>
-         <div id='ellips' class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-        </section>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Abel&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+  </head>
+  <body>
+    <header id="header">
+      <section class="bar" aria-label="Search bar section.">
+        <h1>
+          <span id="border"
+            ><span style="color: #ffbbcc">R</span
+            ><span style="color: #b2e4d5">E</span
+            ><span style="color: #f7be16">C</span
+            ><span style="color: #8ac6d1">O</span
+            ><span style="color: #c05c7e">M</span> |
+            <span style="color: #e5b0ea">M</span
+            ><span style="color: #ff8080">E</span
+            ><span style="color: #d6e4aa">N</span
+            ><span style="color: #7f78d2">D</span>o</span
+          >
+        </h1>
+        <h3 id="intro">
+          Get recommendations based on something you've already enjoyed.
+        </h3>
+        <form id="js-form">
+          <select id="content-type" class="search">
+            <option value="">My favorite</option>
+            <option value="music">band/artist is</option>
+            <option value="books">book is</option>
+            <option value="movies">movie is</option>
+            <option value="shows">tv show is</option>
+            <option value="podcasts">podcast is</option>
+            <option value="games">game is</option>
+          </select>
+          <input
+            class="search"
+            type="text"
+            id="js-search-term"
+            placeholder="type a name of it.."
+            required
+            spellcheck="true"
+          />
+          <button id="submit" class="search">
+            <span id="submit-text">Go</span>
+          </button>
+        </form>
+        <div id="ellips" class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </section>
     </header>
     <main class="hidden">
-        <section class="section" aria-label="Brief information about your search parametr." >
-            <section class="section-one"></section>
-        </section>
-        <section class="section" aria-label="Search results." >
-            <section class="section-two"></section>
-        </section>
-        <a id='button-up' href="#header"></a>
-        <h5><a href="https://www.linkedin.com/in/pashatay/" target="_blank">built by Pasha Tay</a></h5>
+      <section
+        class="section"
+        aria-label="Brief information about your search parametr."
+      >
+        <section class="section-one"></section>
+      </section>
+      <section class="section" aria-label="Search results.">
+        <section class="section-two"></section>
+      </section>
+      <a id="button-up" href="#header"></a>
+      <h5>
+        <a href="https://www.linkedin.com/in/pashatay/" target="_blank"
+          >built by Pasha Tay</a
+        >
+      </h5>
     </main>
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script src="main.js"></script>
-    </body>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
 </html>
